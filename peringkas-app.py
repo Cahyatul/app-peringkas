@@ -6,18 +6,16 @@ import requests
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
-option = st.selectbox("Pilih sumber konten:", ("Upload file", "Input URL"))
-
-if option == "Upload file":
-    uploaded_file = st.file_uploader("Upload file (txt, pdf, docx)", type=["txt", "pdf", "docx"])
-
-
-elif option == "Input URL":
-    url = st.text_input("Masukkan URL:")
-    if st.button("Ringkas URL"):
-        if url:
-            summary = summarize_url(url)
-            st.subheader("Ringkasan URL:")
-            st.write(summary)
+def get_text_from_url(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            paragraphs = soup.find_all('p')
+            article_text = ' '.join(p.get_text() for p in paragraphs)
+            return article_text
         else:
-            st.error("URL tidak valid.")
+            return f"Error: Status code {response.status_code}"
+    except requests.RequestException as e:
+        return f"Request failed: {e}"
+
