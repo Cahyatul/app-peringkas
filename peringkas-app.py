@@ -1,5 +1,5 @@
 import streamlit as st
 
 
-st.header('Welcome to Text Summary')
-st.title('ringkas artikel dengan mudah dan cepat')
+st.title('Welcome to Text Summary')
+st.header('ringkas artikel dengan mudah dan cepat')
