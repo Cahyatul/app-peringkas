@@ -14,4 +14,8 @@ url_input = st.text_input("Masukkan URL artikel")
 # tombol peringkas
 text = ''
 if st.button('Lihat Teks'):
-if url_input:
+    if url_input:
+        # Proses URL
+        text = get_text_from_url(url_input)
+        text = clean_text(text)  # Membersihkan teks
+        st.write(text)
