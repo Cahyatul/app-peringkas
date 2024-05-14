@@ -7,8 +7,6 @@ st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
 
-option = st.text_input("Pilih sumber konten:", ("Input URL"))
-
 elif option == "Input URL":
     url = st.text_input("Masukkan URL:")
     if st.button("Ringkas URL"):
