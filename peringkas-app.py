@@ -9,10 +9,18 @@ st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
 def get_text_from_url(url):
-    if url_input:
-    text = get_text_from_url(url_input)
-else:
-    st.error("URL tidak valid. Harap masukkan URL yang benar.")
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            paragraphs = soup.find_all('p')
+            article_text = ' '.join(p.get_text() for p in paragraphs)
+            return article_text
+        else:
+            return f"Error: Status code {response.status_code}"
+    except requests.RequestException as e:
+        return f"Request failed: {e}"
+        
 # Input URL
 url_input = st.text_input("Masukkan URL")
 
