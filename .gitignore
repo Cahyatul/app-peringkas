@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and logs
+.cache/
+*.log
+*.csv
+*.json
+.local/
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# PyCharm project settings
+.idea/
+*.iml
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# Streamlit cloud settings
+streamlit_app.toml
+
+# Environment variables
+.env
+
+# Folder for virtualenv
+venv/
+ENV/
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+
+# Others
+*.sqlite3
+*.parquet
+*.pdf
+*.docx
