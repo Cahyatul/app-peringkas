@@ -1,9 +1,3 @@
 streamlit
-PyPDF2
-python-docx
-networkx
-numpy
-scikit-learn
-nltk
 beautifulsoup4
 requests
