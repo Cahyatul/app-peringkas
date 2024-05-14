@@ -8,13 +8,7 @@ st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
 # Input URL
-url_input = st.text_input("Masukkan URL:", "https://www.example.com")
-
-# Pastikan url_input tidak kosong atau tidak valid
-if url_input:
-    text = get_text_from_url(url_input)
-else:
-    st.error("URL tidak valid. Harap masukkan URL yang benar.")
+url_input = st.text_input("Masukkan URL")
 
 # Fungsi untuk membersihkan teks
 def clean_text(text):
