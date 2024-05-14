@@ -19,3 +19,6 @@ def get_text_from_url(url):
     except requests.RequestException as e:
         return f"Request failed: {e}"
 
+# Input URL
+url_input = st.text_input("Masukkan URL artikel")
+
