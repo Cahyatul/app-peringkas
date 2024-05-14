@@ -5,7 +5,10 @@ from bs4 import BeautifulSoup
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
-elif option == "Input URL":
+option = st.selectbox("Pilih sumber konten:", ("Upload file", "Input URL"))
+
+
+if option == "Input URL":
     url = st.text_input("Masukkan URL:")
     if st.button("Ringkas URL"):
         if url:
