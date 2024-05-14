@@ -22,12 +22,6 @@ def get_text_from_url(url):
 # Input URL
 url_input = st.text_input("Masukkan URL artikel")
 
-def clean_text(text):
-    # Menghapus data dalam tanda kurung siku
-    text = re.sub(r'\[.*?\]', '', text)
-    # Menghapus spasi ekstra
-    text = re.sub(r'\s+', ' ', text)
-    return text
 
 text = ''
 if st.button('Lihat Teks'):
