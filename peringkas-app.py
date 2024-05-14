@@ -7,6 +7,11 @@ from transformers import pipeline
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
+def get_text_from_url(url):
+    if url_input:
+    text = get_text_from_url(url_input)
+else:
+    st.error("URL tidak valid. Harap masukkan URL yang benar.")
 # Input URL
 url_input = st.text_input("Masukkan URL")
 
