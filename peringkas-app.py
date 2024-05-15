@@ -47,6 +47,5 @@ if st.button('Ringkas Teks'):
         # Proses URL
         text = get_text_from_url(url_input)
         text = clean_text(text)  # Membersihkan teks
-        if 'text' in st.session_state:
         summary = summarize_text(st.session_state.text)
         st.write(summary)
