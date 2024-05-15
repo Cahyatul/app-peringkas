@@ -40,3 +40,17 @@ if st.button('Ringkas Teks'):
         text = get_text_from_url(url_input)
         text = clean_text(text)  # Membersihkan teks
         st.write(text)
+
+# Fungsi peringkas teks
+def summarize_text(text):
+    summarizer = pipeline("summarization")
+    summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
+    return summary[0]['summary_text']
+
+# Tampilkan hasil peringkasan
+if st.button('Tampilkan Ringkasan'):
+    if text:
+        summary = summarize_text(text)
+        st.write(summary)
+    else:
+        st.error('Silakan masukkan teks untuk diringkas.')
