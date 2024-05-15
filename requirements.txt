@@ -2,3 +2,6 @@ streamlit
 beautifulsoup4
 requests
 transformers
+sumy
+nltk
+Sastrawi
