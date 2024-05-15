@@ -52,14 +52,7 @@ def summarize_text(text):
     summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
     return ' '.join([str(sentence) for sentence in summary])
 
-  if text:
-        text = clean_text(text)
-        text = remove_stopwords(text)
-        sentences = split_sentences(text)
-        tokens = tokenize_text(sentences)
-        st.text_input = ' '.join([' '.join(token) for token in tokens])
-        st.write(st.text_input)
-      
+
 # tombol peringkas
 text = ''
 if st.button('Ringkas Teks'):
