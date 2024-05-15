@@ -51,7 +51,16 @@ def summarize_text(text):
     summarizer = TextRankSummarizer()
     summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
     return ' '.join([str(sentence) for sentence in summary])
-
+    
+if text:
+        text = clean_text(text)
+        text = remove_stopwords(text)
+        sentences = split_sentences(text)
+        tokens = tokenize_text(sentences)
+        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
+        st.write(st.session_state.text)
+    else:
+        st.error('Silakan masukkan URL atau unggah file.')
 
 # tombol peringkas
 text = ''
@@ -60,5 +69,10 @@ if st.button('Ringkas Teks'):
         # Proses URL
         text = get_text_from_url(url_input)
         text = clean_text(text)  # Membersihkan teks
-        summary = summarize_text(st.text_input)
+        # Tombol untuk menampilkan ringkasan
+if st.button('Tampilkan Ringkasan'):
+    if 'text' in st.session_state:
+        summary = summarize_text(st.session_state.text)
         st.write(summary)
+    else:
+        st.error('Silakan masukkan teks untuk diringkas.')
