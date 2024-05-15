@@ -57,8 +57,8 @@ def summarize_text(text):
         text = remove_stopwords(text)
         sentences = split_sentences(text)
         tokens = tokenize_text(sentences)
-        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
-        st.write(st.session_state.text)
+        st.text_input = ' '.join([' '.join(token) for token in tokens])
+        st.write(st.text_input)
       
 # tombol peringkas
 text = ''
@@ -67,5 +67,5 @@ if st.button('Ringkas Teks'):
         # Proses URL
         text = get_text_from_url(url_input)
         text = clean_text(text)  # Membersihkan teks
-        summary = summarize_text(st.session_state.text)
+        summary = summarize_text(st.text_input)
         st.write(summary)
