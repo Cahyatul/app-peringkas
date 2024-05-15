@@ -24,21 +24,34 @@ def get_text_from_url(url):
 # Input URL
 url_input = st.text_input("Masukkan URL")
 
-# Fungsi untuk membersihkan teks
+# Fungsi untuk pembersihan teks
 def clean_text(text):
-    # Menghapus data dalam tanda kurung siku
-    text = re.sub(r'\[.*?\]', '', text)
-    # Menghapus spasi ekstra
-    text = re.sub(r'\s+', ' ', text)
+    text = re.sub(r'\[.*?\]', '', text)  # Menghapus teks dalam tanda kurung
+    text = re.sub(r'\s+', ' ', text)  # Menghapus spasi berlebih
+    text = text.lower()  # Mengubah teks menjadi huruf kecil
     return text
 
+# Fungsi untuk menghapus stopwords
+def remove_stopwords(text):
+    factory = StopWordRemoverFactory()
+    stopword_remover = factory.create_stop_word_remover()
+    return stopword_remover.remove(text)
 
+# Fungsi untuk memisahkan teks menjadi kalimat-kalimat
+def split_sentences(text):
+    return nltk.sent_tokenize(text)
 
-# Fungsi peringkas teks
+# Fungsi untuk tokenisasi teks
+def tokenize_text(sentences):
+    return [nltk.word_tokenize(sentence) for sentence in sentences]
+
+# Fungsi untuk meringkas teks menggunakan TextRank
 def summarize_text(text):
-    summarizer = pipeline("summarization")
-    summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
-    return summary[0]['summary_text']
+    parser = PlaintextParser.from_string(text, SumyTokenizer("english"))
+    summarizer = TextRankSummarizer()
+    summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
+    return ' '.join([str(sentence) for sentence in summary])
+
 
 # tombol peringkas
 text = ''
