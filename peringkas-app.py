@@ -47,10 +47,4 @@ def summarize_text(text):
     summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
     return summary[0]['summary_text']
 
-# Tampilkan hasil peringkasan
-if st.button('Tampilkan Ringkasan'):
-    if text:
-        summary = summarize_text(text)
-        st.write(summary)
-    else:
-        st.error('Silakan masukkan teks untuk diringkas.')
+
