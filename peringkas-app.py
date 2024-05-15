@@ -3,6 +3,11 @@ from bs4 import BeautifulSoup
 import requests
 from transformers import pipeline
 import re
+import nltk
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer as SumyTokenizer
+from sumy.summarizers.text_rank import TextRankSummarizer
 
 
 st.title('Welcome to Text Summary')
