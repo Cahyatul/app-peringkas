@@ -32,14 +32,7 @@ def clean_text(text):
     text = re.sub(r'\s+', ' ', text)
     return text
 
-# tombol peringkas
-text = ''
-if st.button('Ringkas Teks'):
-    if url_input:
-        # Proses URL
-        text = get_text_from_url(url_input)
-        text = clean_text(text)  # Membersihkan teks
-        st.write(text)
+
 
 # Fungsi peringkas teks
 def summarize_text(text):
@@ -47,4 +40,13 @@ def summarize_text(text):
     summary = summarizer(text, max_length=130, min_length=30, do_sample=False)
     return summary[0]['summary_text']
 
-
+# tombol peringkas
+text = ''
+if st.button('Ringkas Teks'):
+    if url_input:
+        # Proses URL
+        text = get_text_from_url(url_input)
+        text = clean_text(text)  # Membersihkan teks
+        if 'text' in st.session_state:
+        summary = summarize_text(st.session_state.text)
+        st.write(summary)
