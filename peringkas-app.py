@@ -8,6 +8,12 @@ import re
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
+user_input = st.text_input("Enter text to summarize here:")
+if user_input:
+    summary = summarize_text(user_input)
+    st.write("Summary:")
+    st.write(summary)
+
 def get_text_from_url(url):
     try:
         response = requests.get(url)
