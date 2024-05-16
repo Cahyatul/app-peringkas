@@ -28,8 +28,7 @@ def get_text_from_url(url):
     except requests.RequestException as e:
         return f"Request failed: {e}"
         
-# Input URL
-url_input = st.text_input("Masukkan URL")
+
 
 # Fungsi untuk pembersihan teks
 def clean_text(text):
@@ -59,15 +58,28 @@ def summarize_text(text):
     summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
     return ' '.join([str(sentence) for sentence in summary])
 
+
+# Input URL
+url_input = st.text_input("Masukkan URL")
+
 # tombol peringkas
 text = ''
-if st.button('Ringkas Teks'):
+if st.button('Lihat Teks'):
+    text = ''
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
-        text = clean_text(text)  # Membersihkan teks
+     
         
-
+  if text:
+        text = clean_text(text)
+        text = remove_stopwords(text)
+        sentences = split_sentences(text)
+        tokens = tokenize_text(sentences)
+        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
+        st.write(st.session_state.text)
+    else:
+        st.error('Silakan masukkan URL atau unggah file.')
 
 
         # Tombol untuk menampilkan ringkasan
