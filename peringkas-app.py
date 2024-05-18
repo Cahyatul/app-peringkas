@@ -43,7 +43,7 @@ text = ''
 if st.button('Ringkas Teks'):
     if url_input:
         # Proses URL
-        text = get_text_from_url(url_input)
+        text = get_text_from_url(url_input, user_input )
         text = clean_text(text)  # Membersihkan teks
         st.write(text)
 
