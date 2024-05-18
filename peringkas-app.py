@@ -66,15 +66,7 @@ if st.button('Lihat Teks'):
     elif uploaded_file:
 
 
-         if text:
-        text = clean_text(text)
-        text = remove_stopwords(text)
-        sentences = split_sentences(text)
-        tokens = tokenize_text(sentences)
-        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
-        st.write(st.session_state.text)
-    else:
-        st.error('Silakan masukkan URL atau unggah file.')
+       
 
 
 # Tombol untuk menampilkan ringkasan
