@@ -3,6 +3,12 @@ from bs4 import BeautifulSoup
 import requests
 from transformers import pipeline
 import re
+import nltk
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer as SumyTokenizer
+from sumy.summarizers.text_rank import TextRankSummarizer
+
 
 
 st.title('Welcome to Text Summary')
@@ -63,7 +69,7 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
- else:
+     else:
             st.error('Format file tidak didukung.')
 
  if text:
