@@ -13,8 +13,8 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 # Mengunduh tokenizer untuk bahasa Inggris (yang dapat digunakan untuk teks Indonesia)
 nltk.download('punkt')
 
-st.subheader('Selamat Datang Di Aplikasi RingkasAja.ID',divider='rainbow')
-st.write("Solusi Meringkas Cepat dijamin Akurat")
+st.subheader('WELCOME tO TEXT SUMMARY)
+st.write("Solusi Ringkas Artikel dengan Mudah")
 
 # Fungsi untuk mengambil teks dari URL
 def get_text_from_url(url):
