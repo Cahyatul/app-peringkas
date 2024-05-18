@@ -64,6 +64,8 @@ def summarize_text(text):
 # Input URL
 url_input = st.text_input("Masukkan URL artikel")
 
+# Input Teks
+text_input = st.text_area("Atau masukkan teks langsung di sini")
 
 # Tombol untuk menampilkan teks
 if st.button('Lihat Teks'):
@@ -71,6 +73,11 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
+     elif text_input:
+        # Proses Teks Masukan Langsung
+        text = text_input
+
+
        
     
     if text:
@@ -81,7 +88,7 @@ if st.button('Lihat Teks'):
         st.session_state.text = ' '.join([' '.join(token) for token in tokens])
         st.write(st.session_state.text)
     else:
-        st.error('Silakan masukkan URL')
+        st.error('Silakan masukkan URL atau masukkan teks langsung')
 
 # Tombol untuk menampilkan ringkasan
 if st.button('Tampilkan Ringkasan'):
