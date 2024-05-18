@@ -73,7 +73,6 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
-     elif text_input:
         # Proses Teks Masukan Langsung
         text = text_input
 
