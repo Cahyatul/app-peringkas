@@ -1,6 +1,8 @@
 streamlit
-beautifulsoup4
 requests
+PyPDF2
+python-docx
+beautifulsoup4
 sumy
 nltk
 Sastrawi
