@@ -63,7 +63,18 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
+ else:
+            st.error('Format file tidak didukung.')
 
+ if text:
+        text = clean_text(text)
+        text = remove_stopwords(text)
+        sentences = split_sentences(text)
+        tokens = tokenize_text(sentences)
+        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
+        st.write(st.session_state.text)
+    else:
+        st.error('Silakan masukkan URL atau unggah file.')
 
        
 
