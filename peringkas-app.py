@@ -4,6 +4,10 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from heapq import nlargest
 
+# Unduh data NLTK yang diperlukan
+nltk.download('punkt')
+nltk.download('stopwords')
+
 # Fungsi untuk meringkas teks
 def summarize_text(text):
     stop_words = set(stopwords.words("english"))
