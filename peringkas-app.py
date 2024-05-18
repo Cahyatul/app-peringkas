@@ -13,7 +13,7 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 # Mengunduh tokenizer untuk bahasa Inggris (yang dapat digunakan untuk teks Indonesia)
 nltk.download('punkt')
 
-st.subheader('WELCOME tO TEXT SUMMARY')
+st.subheader('WELCOME tO TEXT SUMMARY' ,divider='blue')
 st.write("Solusi Ringkas Artikel dengan Mudah")
 
 # Fungsi untuk mengambil teks dari URL
