@@ -9,9 +9,6 @@ from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer as SumyTokenizer
 from sumy.summarizers.text_rank import TextRankSummarizer
 
-# Mengunduh tokenizer untuk bahasa Inggris (yang dapat digunakan untuk teks Indonesia)
-nltk.download('punkt')
-
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
