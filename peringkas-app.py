@@ -78,10 +78,7 @@ if st.button('Lihat Teks'):
         tokens = tokenize_text(sentences)
         st.session_state.text = ' '.join([' '.join(token) for token in tokens])
         st.write(st.session_state.text)
-    else:
-        st.error('Silakan masukkan URL atau unggah file.')
 
-       
 
 
 # Tombol untuk menampilkan ringkasan
