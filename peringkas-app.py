@@ -66,6 +66,8 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
+ else:
+            st.error('Format file tidak didukung.')
 
  
     if text:
