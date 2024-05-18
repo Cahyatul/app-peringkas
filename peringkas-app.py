@@ -9,14 +9,14 @@ from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer as SumyTokenizer
 from sumy.summarizers.text_rank import TextRankSummarizer
 
-
+# Mengunduh tokenizer untuk bahasa Inggris (yang dapat digunakan untuk teks Indonesia)
+nltk.download('punkt')
 
 st.title('Welcome to Text Summary')
 st.header('ringkas artikel dengan mudah dan cepat')
 
 
-
-
+# Fungsi untuk mengambil teks dari URL
 def get_text_from_url(url):
     try:
         response = requests.get(url)
@@ -58,10 +58,10 @@ def summarize_text(text):
     summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
     return ' '.join([str(sentence) for sentence in summary])
 
-user_input = st.text_input("masukkan teks")
-
 # Input URL
-url_input = st.text_input("Masukkan URL")
+url_input = st.text_input("Masukkan URL artikel")
+
+user_input = st.text_input("masukkan teks")
 
 # Tombol untuk menampilkan teks
 if st.button('Lihat Teks'):
@@ -69,17 +69,18 @@ if st.button('Lihat Teks'):
     if url_input:
         # Proses URL
         text = get_text_from_url(url_input)
-
-
- if text:
+        else:
+            st.error('Format file tidak didukung.')
+    
+    if text:
         text = clean_text(text)
         text = remove_stopwords(text)
         sentences = split_sentences(text)
         tokens = tokenize_text(sentences)
         st.session_state.text = ' '.join([' '.join(token) for token in tokens])
         st.write(st.session_state.text)
-
-
+    else:
+        st.error('Silakan masukkan URL atau unggah file.')
 
 # Tombol untuk menampilkan ringkasan
 if st.button('Tampilkan Ringkasan'):
@@ -87,4 +88,4 @@ if st.button('Tampilkan Ringkasan'):
         summary = summarize_text(st.session_state.text)
         st.write(summary)
     else:
-        st.error('Masukkan teks untuk diringkas.')
+        st.error('Silakan masukkan teks untuk diringkas.')
