@@ -65,7 +65,15 @@ def summarize_text(text):
 url_input = st.text_input("Masukkan URL artikel")
 
 # Input Teks
-text_input = st.text_area("Atau masukkan teks langsung di sini")
+
+  text = st.text_area("Enter Text Here", height=1000)
+    if st.button("Summarize"):
+        if text:
+            summary = generate_summary(text)
+            st.subheader("Summary")
+            st.write(summary)
+        else:
+            st.write("Please enter some text to summarize.")
 
 # Tombol untuk menampilkan teks
 if st.button('Lihat Teks'):
