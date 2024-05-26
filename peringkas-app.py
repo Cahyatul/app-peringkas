@@ -1,7 +1,5 @@
 import streamlit as st
 import requests
-from PyPDF2 import PdfReader
-from docx import Document
 from bs4 import BeautifulSoup
 import re
 import nltk
@@ -19,19 +17,7 @@ st.markdown(
 )
 st.write("Ringkas Artikel dengan mudah dan cepat")
 
-# Fungsi untuk mengambil teks dari URL
-def get_text_from_url(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            paragraphs = soup.find_all('p')
-            article_text = ' '.join(p.get_text() for p in paragraphs)
-            return article_text
-        else:
-            return f"Error: Status code {response.status_code}"
-    except requests.RequestException as e:
-        return f"Request failed: {e}"
+
 
 # Fungsi untuk pembersihan teks
 def clean_text(text):
@@ -61,8 +47,6 @@ def summarize_text(text):
     summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
     return ' '.join([str(sentence) for sentence in summary])
 
-# Input URL
-url_input = st.text_input("Masukkan URL artikel")
 
 # Input Teks
 text_input = st.text_area("Atau masukkan teks langsung di sini")
@@ -71,21 +55,19 @@ text_input = st.text_area("Atau masukkan teks langsung di sini")
 # Tombol untuk menampilkan teks
 if st.button('Lihat Teks'):
     text = ''
-    if url_input:
-        # Proses URL
-        text = get_text_from_url(url_input)
+    if text_input:
+        # Proses teks langsung
+        text = text_input
 
-       
-    
     if text:
         text = clean_text(text)
         text = remove_stopwords(text)
-        sentences = split_sentences(text)
-        tokens = tokenize_text(sentences)
-        st.session_state.text = ' '.join([' '.join(token) for token in tokens])
+        st.session_state.text = text
         st.write(st.session_state.text)
     else:
         st.error('Silakan masukkan URL atau masukkan teks langsung')
+
+
 
 # Tombol untuk menampilkan ringkasan
 if st.button('Tampilkan Ringkasan'):
