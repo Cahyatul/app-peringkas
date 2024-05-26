@@ -10,10 +10,7 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 # Mengunduh tokenizer untuk bahasa Inggris (yang dapat digunakan untuk teks Indonesia)
 nltk.download('punkt')
 
-st.markdown(
-    '<h2 style="color:rainbow;">Welcome To Text Summary</h2>',
-    unsafe_allow_html=True
-)
+st.subheader('Welcome To Text Summary')
 st.write("Ringkas Artikel dengan mudah dan cepat")
 
 
