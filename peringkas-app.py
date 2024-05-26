@@ -1,5 +1,4 @@
 import streamlit as st
-import requests
 import re
 import nltk
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
