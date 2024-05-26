@@ -47,7 +47,7 @@ def summarize_text(text):
 
 
 # Input Teks
-text_input = st.text_area("Atau masukkan teks langsung di sini")
+text_input = st.text_area("Masukkan teks langsung di sini")
 
     
 # Tombol untuk menampilkan teks
