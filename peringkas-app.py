@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-from bs4 import BeautifulSoup
 import re
 import nltk
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
@@ -18,8 +17,7 @@ st.markdown(
 st.write("Ringkas Artikel dengan mudah dan cepat")
 
 
-
-# Fungsi untuk pembersihan teks
+# untuk pembersihan teks
 def clean_text(text):
     text = re.sub(r'\[.*?\]', '', text)  # Menghapus teks dalam tanda kurung
     text = re.sub(r'\s+', ' ', text)  # Menghapus spasi berlebih
@@ -65,7 +63,7 @@ if st.button('Lihat Teks'):
         st.session_state.text = text
         st.write(st.session_state.text)
     else:
-        st.error('Silakan masukkan URL atau masukkan teks langsung')
+        st.error('Silakan masukkan teks langsung')
 
 
 
