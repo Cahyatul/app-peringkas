@@ -39,7 +39,7 @@ def tokenize_text(sentences):
 def summarize_text(text):
     parser = PlaintextParser.from_string(text, SumyTokenizer("english"))
     summarizer = TextRankSummarizer()
-    summary = summarizer(parser.document, 3)  # Merangkum menjadi 3 kalimat
+    summary = summarizer(parser.document, 5)  # Merangkum menjadi 5 kalimat
     return ' '.join([str(sentence) for sentence in summary])
 
 
