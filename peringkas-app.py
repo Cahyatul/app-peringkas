@@ -21,21 +21,21 @@ def clean_text(text):
     text = text.lower()  # Mengubah teks menjadi huruf kecil
     return text
 
-# Fungsi untuk menghapus stopwords
+# untuk menghapus stopwords
 def remove_stopwords(text):
     factory = StopWordRemoverFactory()
     stopword_remover = factory.create_stop_word_remover()
     return stopword_remover.remove(text)
 
-# Fungsi untuk memisahkan teks menjadi kalimat-kalimat
+# untuk memisahkan teks menjadi kalimat-kalimat
 def split_sentences(text):
     return nltk.sent_tokenize(text)
 
-# Fungsi untuk tokenisasi teks
+# untuk tokenisasi teks
 def tokenize_text(sentences):
     return [nltk.word_tokenize(sentence) for sentence in sentences]
 
-# Fungsi untuk meringkas teks menggunakan TextRank
+# untuk meringkas teks menggunakan TextRank
 def summarize_text(text):
     parser = PlaintextParser.from_string(text, SumyTokenizer("english"))
     summarizer = TextRankSummarizer()
@@ -60,14 +60,14 @@ if st.button('Lihat Teks'):
         st.session_state.text = text
         st.write(text)
     else:
-        st.error('Silakan masukkan teks langsung')
+        st.error('Masukkan teks langsung')
 
 
 
 # Tombol untuk menampilkan ringkasan
-if st.button('Tampilkan Ringkasan'):
+if st.button('Tampilkan Hasil Ringkasan'):
     if 'text' in st.session_state:
         summary = summarize_text(st.session_state.text)
         st.write(summary)
     else:
-        st.error('Silakan masukkan teks untuk diringkas.')
+        st.error('Masukkan teks untuk diringkas.')
