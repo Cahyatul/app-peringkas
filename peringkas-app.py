@@ -58,7 +58,7 @@ if st.button('Lihat Teks'):
         text = clean_text(text)
         text = remove_stopwords(text)
         st.session_state.text = text
-        st.write(st.session_state.text)
+        st.write(text)
     else:
         st.error('Silakan masukkan teks langsung')
 
