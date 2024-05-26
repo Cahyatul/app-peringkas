@@ -11,7 +11,7 @@ from sumy.summarizers.text_rank import TextRankSummarizer
 nltk.download('punkt')
 
 st.markdown(
-    '<h2 style="color:raibow;">Welcome To Text Summary</h2>',
+    '<h2 style="color:rainbow;">Welcome To Text Summary</h2>',
     unsafe_allow_html=True
 )
 st.write("Ringkas Artikel dengan mudah dan cepat")
